@@ -1,9 +1,9 @@
 .article-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  /* border: 1px solid #ddd; */
+  /* border-radius: 5px; */
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  /* transition: box-shadow 0.3s ease; */
   margin: 10px;
   max-width: 600px;
 }
@@ -24,7 +24,9 @@
 }
 
 .article-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  background-color: rgba(242, 244, 245, 255);
+  border-radius: 8px;
 }
 
 .article-image {
@@ -36,4 +38,20 @@
 .article-title {
   font-size: 18px;
   margin: 0;
+}
+
+.article-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.article-card a:visited {
+  color: black;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 0;
 }

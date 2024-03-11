@@ -18,7 +18,12 @@ const Articles = () => {
   return isLoaded ? (
     <div>
       {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />;
+        return (
+          <div key={article.article_id}>
+            <ArticleCard article={article} />
+            <hr />
+          </div>
+        );
       })}
     </div>
   ) : (
