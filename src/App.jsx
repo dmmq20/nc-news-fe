@@ -1,5 +1,8 @@
-function App() {
-  return "NC News";
-}
+import Articles from "./components/Articles";
+import "./App.css";
+
+const App = () => {
+  return <Articles />;
+};
 
 export default App;
