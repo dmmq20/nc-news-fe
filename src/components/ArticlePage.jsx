@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { getArticle } from "../api";
 import { useEffect, useState } from "react";
 import "./ArticlePage.css";
+import Comments from "./Comments";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -24,6 +25,7 @@ const ArticlePage = () => {
       <p className="date">{new Date(article.created_at).toDateString()}</p>
       <p className="article-content">{article.body}</p>
       <p className="likes">Likes: {article.votes}</p>
+      <Comments article_id={article_id} />
     </article>
   ) : (
     <p>Loading...</p>
