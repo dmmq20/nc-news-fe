@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ArticleCard.css";
 
 const ArticleCard = ({ article }) => {
@@ -5,7 +6,9 @@ const ArticleCard = ({ article }) => {
     <article className="article-card">
       <div className="title-and-img">
         <div>
-          <h3 className="article-title">{article.title}</h3>
+          <Link to={`/articles/${article.article_id}`}>
+            <h3 className="article-title">{article.title}</h3>
+          </Link>
           <p>{new Date(article.created_at).toDateString()}</p>
         </div>
         <img className="article-image" src={article.article_img_url} />
