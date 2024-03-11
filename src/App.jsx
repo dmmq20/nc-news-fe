@@ -9,7 +9,6 @@ const App = () => {
       <Route path="/articles/:article_id" element={<ArticlePage />} />
     </Routes>
   );
-  // return
 };
 
 export default App;
