@@ -1,3 +1,5 @@
+import "./ArticleCard.css";
+
 const ArticleCard = ({ article }) => {
   return (
     <article className="article-card">
