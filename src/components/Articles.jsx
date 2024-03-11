@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ArticleContext } from "../contexts/articleContext";
 import { getAllArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import Spinner from "./Spinner";
 
 const Articles = () => {
   const { articles, setArticles } = useContext(ArticleContext);
@@ -27,7 +28,7 @@ const Articles = () => {
       })}
     </div>
   ) : (
-    "Loading articles..."
+    <Spinner />
   );
 };
 

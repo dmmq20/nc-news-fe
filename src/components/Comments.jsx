@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { getArticleComments } from "../api";
+import Spinner from "./Spinner";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -26,7 +27,7 @@ const Comments = ({ article_id }) => {
       )}
     </div>
   ) : (
-    <p>Loading...</p>
+    <Spinner />
   );
 };
 
