@@ -39,4 +39,18 @@
 
 .likes {
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.like-icons {
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.likes img {
+  width: 32px;
+  height: 32px;
 }
