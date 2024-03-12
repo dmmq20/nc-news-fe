@@ -27,3 +27,9 @@ export const updateArticleVotes = (article_id, body) => {
     return data.article;
   });
 };
+
+export const addArticleComment = (article_id, body) => {
+  return api.post(`/articles/${article_id}/comments`, body).then(({ data }) => {
+    return data.comment;
+  });
+};
