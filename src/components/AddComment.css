@@ -1,0 +1,25 @@
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-form textarea {
+  padding: 7px;
+}
+
+.comment-form button {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  background: #6e6d70;
+  color: #ffffff;
+}
+
+.notification {
+  margin: 30px;
+  text-align: center;
+  font-weight: 600;
+}
