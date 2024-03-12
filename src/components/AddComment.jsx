@@ -39,22 +39,21 @@ const AddComment = ({ article_id, currentUser, comments, setComments }) => {
     setCommentContent("");
   };
 
-  return notification ? (
-    <p className="notification">{notification}</p>
-  ) : (
+  return (
     <div className="comment-form">
       <form onSubmit={handleSubmit}>
         <textarea
           type="text"
           placeholder="add new comment"
           rows="5"
-          cols="40"
+          cols="60"
           value={commentContent}
           onChange={(e) => setCommentContent(e.target.value)}
           required
         />
         <button type="submit">Add comment</button>
       </form>
+      <p className="notification">{notification}</p>
     </div>
   );
 };
