@@ -1,0 +1,9 @@
+.comment .delete {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.comment .delete:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

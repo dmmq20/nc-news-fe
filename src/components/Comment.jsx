@@ -1,16 +1,41 @@
-const Comment = ({ comment }) => {
+import { useState } from "react";
+import "./Comment.css";
+import { deleteArticleComment } from "../api";
+
+const Comment = ({ comment, currentUser }) => {
+  const [notification, setNotification] = useState(null);
+
   const time = new Date() - new Date(comment.created_at);
-  // only handling days for now
   const days = Math.floor(time / (1000 * 60 * 60 * 24));
+  const userIsAuthor = comment.author === currentUser;
+
+  const handleDelete = (_) => {
+    setNotification("Comment removed");
+    deleteArticleComment(comment.comment_id).catch((_) => {
+      setNotification("Something went wrong...");
+    });
+  };
+
   return (
     <div className="comment">
-      <div style={{ display: "flex" }}>
-        <span style={{ fontWeight: "600" }}>{comment.author}</span>
-        <ul style={{ margin: "0" }}>
-          <li>{days} days ago</li>
-        </ul>
-      </div>
-      <p>{comment.body}</p>
+      {notification ? (
+        <p>{notification}</p>
+      ) : (
+        <>
+          <div style={{ display: "flex" }}>
+            <span style={{ fontWeight: "600" }}>{comment.author}</span>
+            <ul style={{ margin: "0" }}>
+              <li>{days} days ago</li>
+            </ul>
+          </div>
+          <p>{comment.body}</p>
+          {userIsAuthor && (
+            <span className="delete" onClick={handleDelete}>
+              Delete
+            </span>
+          )}
+        </>
+      )}
       <hr />
     </div>
   );

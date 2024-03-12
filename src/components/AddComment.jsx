@@ -25,7 +25,8 @@ const AddComment = ({ article_id, currentUser, comments, setComments }) => {
       username: currentUser,
       body: commentContent,
     })
-      .then((_) => {
+      .then((comment) => {
+        setComments((comments) => [comment, ...comments.slice(1)]);
         setNotification("Thanks for your comment!");
         setTimeout(() => setNotification(null), 2000);
       })
