@@ -33,3 +33,7 @@ export const addArticleComment = (article_id, body) => {
     return data.comment;
   });
 };
+
+export const deleteArticleComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`);
+};

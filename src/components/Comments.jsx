@@ -30,7 +30,11 @@ const Comments = ({ article_id }) => {
       />
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <Comment key={comment.comment_id} comment={comment} />
+          <Comment
+            key={comment.comment_id}
+            comment={comment}
+            currentUser={currentUser}
+          />
         ))
       ) : (
         <p>No comments</p>
