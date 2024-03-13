@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import "./ArticleCard.css";
+import "/src/components/styles/ArticleCard.css";
 
 const ArticleCard = ({ article }) => {
   return (
     <article className="article-card">
-      <Link to={`/articles/${article.article_id}`}>
+      <Link to={`/article/${article.article_id}`}>
         <div className="title-and-img">
           <div>
             <h3 className="article-title">{article.title}</h3>

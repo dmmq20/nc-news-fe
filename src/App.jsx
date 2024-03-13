@@ -5,6 +5,7 @@ import "./App.css";
 import { useContext } from "react";
 import { UserContext } from "./contexts/userContext";
 import { useEffect } from "react";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const { setCurrentUser } = useContext(UserContext);
@@ -14,10 +15,14 @@ const App = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<Articles />} />
-      <Route path="/articles/:article_id" element={<ArticlePage />} />
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Articles />} />
+        <Route path="/articles/:topic" element={<Articles />} />
+        <Route path="/article/:article_id" element={<ArticlePage />} />
+      </Routes>
+    </>
   );
 };
 

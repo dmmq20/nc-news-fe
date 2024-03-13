@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getArticle, updateArticleVotes } from "../api";
 import { useEffect, useState } from "react";
-import "./ArticlePage.css";
+import "/src/components/styles/ArticlePage.css";
 import Comments from "./Comments";
 import Spinner from "./Spinner";
 

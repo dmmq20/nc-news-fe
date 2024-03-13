@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Comment.css";
+import "/src/components/styles/Comment.css";
 import { deleteArticleComment } from "../api";
 
 const Comment = ({ comment, currentUser }) => {

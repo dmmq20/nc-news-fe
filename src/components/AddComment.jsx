@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AddComment.css";
+import "/src/components/styles/AddComment.css";
 import { addArticleComment } from "../api";
 
 const AddComment = ({ article_id, currentUser, comments, setComments }) => {
