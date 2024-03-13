@@ -14,9 +14,11 @@ const ArticleCard = ({ article }) => {
         </div>
         <div>
           <ul>
-            <li style={{ textDecoration: "none" }}>Author: {article.author}</li>
-            <li style={{ textDecoration: "none" }}>Topic: {article.topic}</li>
-            <li style={{ textDecoration: "none" }}>Votes: {article.votes}</li>
+            <li style={{ textDecoration: "none" }}>{article.author}</li>
+            {/* <li style={{ textDecoration: "none" }}>Topic: {article.topic}</li> */}
+            <li style={{ textDecoration: "none" }}>
+              {article.votes} votes | {article.comment_count} comments
+            </li>
           </ul>
         </div>
       </Link>
