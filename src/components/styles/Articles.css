@@ -1,0 +1,15 @@
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.show-more {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.show-more:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

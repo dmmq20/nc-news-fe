@@ -1,3 +1,4 @@
+import "/src/components/styles/Articles.css";
 import { useContext, useEffect, useState } from "react";
 import { ArticleContext } from "../contexts/articleContext";
 import { getAllArticles } from "../api";
@@ -8,15 +9,16 @@ import { useParams } from "react-router-dom";
 const Articles = () => {
   const { articles, setArticles } = useContext(ArticleContext);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showMore, setShowMore] = useState(1);
   const { topic } = useParams();
 
   useEffect(() => {
     setIsLoaded(false);
-    getAllArticles(topic).then(({ articles }) => {
+    getAllArticles(topic, showMore).then(({ articles }) => {
       setArticles(articles);
       setIsLoaded(true);
     });
-  }, [topic]);
+  }, [topic, showMore]);
 
   return isLoaded ? (
     <div>
@@ -28,6 +30,11 @@ const Articles = () => {
           </div>
         );
       })}
+      <div className="show-more-container">
+        <span className="show-more" onClick={() => setShowMore(showMore + 1)}>
+          Show more
+        </span>
+      </div>
     </div>
   ) : (
     <Spinner />
