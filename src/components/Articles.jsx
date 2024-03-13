@@ -5,7 +5,7 @@ import { getAllArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import Spinner from "./Spinner";
 import { useParams, useSearchParams } from "react-router-dom";
-import Filter from "./Filters";
+import Filter from "./Filter";
 
 const Articles = () => {
   const { articles, setArticles } = useContext(ArticleContext);

@@ -16,7 +16,7 @@ const Filter = ({ searchParams, setSearchParams }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSearchParams({ sort_by: sortBy, order: orderBy }, false);
+    setSearchParams({ sort_by: sortBy, order: orderBy });
   };
 
   return (
