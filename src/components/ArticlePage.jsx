@@ -3,7 +3,7 @@ import { getArticle, updateArticleVotes } from "../api";
 import { useEffect, useState } from "react";
 import "/src/components/styles/ArticlePage.css";
 import Comments from "./Comments";
-import Spinner from "./Spinner";
+import Loading from "./Loading";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -56,7 +56,7 @@ const ArticlePage = () => {
       <Comments article_id={article_id} />
     </article>
   ) : (
-    <Spinner />
+    <Loading />
   );
 };
 

@@ -50,3 +50,7 @@ export const deleteArticleComment = (comment_id) => {
 export const getAllTopics = () => {
   return api.get("/topics").then(({ data }) => data.topics);
 };
+
+export const getAllUsers = () => {
+  return api.get("/users").then(({ data }) => data.users);
+};

@@ -1,20 +1,16 @@
+import "./App.css";
 import ArticlePage from "./components/ArticlePage";
 import Articles from "./components/Articles";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import { useContext } from "react";
 import { UserContext } from "./contexts/userContext";
-import { useEffect } from "react";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 
 const App = () => {
-  const { setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-  useEffect(() => {
-    setCurrentUser("jessjelly");
-  }, []);
-
-  return (
+  return currentUser ? (
     <>
       <Navbar />
       <Routes>
@@ -23,6 +19,8 @@ const App = () => {
         <Route path="/article/:article_id" element={<ArticlePage />} />
       </Routes>
     </>
+  ) : (
+    <Login />
   );
 };
 

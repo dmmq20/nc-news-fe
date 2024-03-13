@@ -6,7 +6,8 @@ const Comment = ({ comment, currentUser }) => {
   const [notification, setNotification] = useState(null);
 
   const time = new Date() - new Date(comment.created_at);
-  const days = Math.floor(time / (1000 * 60 * 60 * 24));
+  let days = Math.floor(time / (1000 * 60 * 60 * 24));
+  days = Math.max(days, 0);
   const userIsAuthor = comment.author === currentUser;
 
   const handleDelete = (_) => {

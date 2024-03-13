@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { getArticleComments } from "../api";
-import Spinner from "./Spinner";
 import AddComment from "./AddComment";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
+import Loading from "./Loading";
 
 const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -24,7 +24,7 @@ const Comments = ({ article_id }) => {
       <h3>Comments</h3>
       <AddComment
         article_id={article_id}
-        currentUser={currentUser}
+        currentUser={currentUser.username}
         comments={comments}
         setComments={setComments}
       />
@@ -33,7 +33,7 @@ const Comments = ({ article_id }) => {
           <Comment
             key={comment.comment_id}
             comment={comment}
-            currentUser={currentUser}
+            currentUser={currentUser.username}
           />
         ))
       ) : (
@@ -41,7 +41,7 @@ const Comments = ({ article_id }) => {
       )}
     </div>
   ) : (
-    <Spinner />
+    <Loading />
   );
 };
 

@@ -3,24 +3,32 @@ import { useContext, useEffect, useState } from "react";
 import { ArticleContext } from "../contexts/articleContext";
 import { getAllArticles } from "../api";
 import ArticleCard from "./ArticleCard";
-import Spinner from "./Spinner";
 import { useParams, useSearchParams } from "react-router-dom";
 import Filter from "./Filter";
+import Loading from "./Loading";
+import Spinner from "./Spinner";
 
 const Articles = () => {
   const { articles, setArticles } = useContext(ArticleContext);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showMore, setShowMore] = useState(1);
+  const [showMoreIsClicked, setShowMoreIsClicked] = useState(false);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    setIsLoaded(false);
+    setIsLoaded(false || showMoreIsClicked);
     getAllArticles(topic, showMore, searchParams).then(({ articles }) => {
       setArticles(articles);
       setIsLoaded(true);
+      setShowMoreIsClicked(false);
     });
   }, [topic, showMore, searchParams]);
+
+  const handleShowMore = () => {
+    setShowMoreIsClicked(true);
+    setShowMore(showMore + 1);
+  };
 
   return isLoaded ? (
     <div>
@@ -34,13 +42,17 @@ const Articles = () => {
         );
       })}
       <div className="show-more-container">
-        <span className="show-more" onClick={() => setShowMore(showMore + 1)}>
-          Show more
-        </span>
+        {showMoreIsClicked ? (
+          <Spinner />
+        ) : (
+          <span className="show-more" onClick={handleShowMore}>
+            Show more
+          </span>
+        )}
       </div>
     </div>
   ) : (
-    <Spinner />
+    <Loading />
   );
 };
 

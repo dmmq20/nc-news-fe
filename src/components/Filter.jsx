@@ -6,16 +6,16 @@ const Filter = ({ searchParams, setSearchParams }) => {
   );
   const [orderBy, setOrderBy] = useState(searchParams.get("order") || "desc");
 
-  const handleSortByChange = (event) => {
-    setSortBy(event.target.value);
+  const handleSortByChange = (e) => {
+    setSortBy(e.target.value);
   };
 
-  const handleOrderByChange = (event) => {
-    setOrderBy(event.target.value);
+  const handleOrderByChange = (e) => {
+    setOrderBy(e.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSearchParams({ sort_by: sortBy, order: orderBy });
   };
 
@@ -28,6 +28,7 @@ const Filter = ({ searchParams, setSearchParams }) => {
         justifyContent: "center",
         alignItems: "center",
         gap: "5px",
+        flexWrap: "wrap",
       }}
     >
       <label htmlFor="sort_by">Sort by:</label>

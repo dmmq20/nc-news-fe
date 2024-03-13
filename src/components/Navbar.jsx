@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "/src/components/styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Topics from "./Topics";
+import { UserContext } from "../contexts/userContext";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { logout } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -16,6 +26,9 @@ const Navbar = () => {
         <ul className="navbar-menu-items">
           <li className="item">Topics</li>
           <Topics toggleMenu={toggleMenu} />
+          <p className="item logout" onClick={handleLogout}>
+            Logout
+          </p>
         </ul>
       </div>
       <div className="navbar-toggle" onClick={toggleMenu}>
@@ -24,8 +37,7 @@ const Navbar = () => {
         <div className="line"></div>
       </div>
       <Link to="/" className="title">
-        <div className="big-title">NC</div>
-        <div className="little-title">News</div>
+        <Logo />
       </Link>
     </nav>
   );

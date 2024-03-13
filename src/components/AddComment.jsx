@@ -45,7 +45,6 @@ const AddComment = ({ article_id, currentUser, comments, setComments }) => {
         <textarea
           type="text"
           placeholder="add new comment"
-          // style={{ width: "400px" }}
           value={commentContent}
           onChange={(e) => setCommentContent(e.target.value)}
           required

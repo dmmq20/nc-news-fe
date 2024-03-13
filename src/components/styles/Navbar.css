@@ -68,17 +68,11 @@
   margin: 3px 0;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.logout {
+  cursor: pointer;
 }
 
-.big-title {
-  font-size: 38px;
-  font-weight: 900;
-}
-
-.little-title {
-  font-weight: 600;
+.logout:hover {
+  text-decoration: underline;
+  color: red;
 }
