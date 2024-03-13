@@ -1,0 +1,17 @@
+.filter-form select {
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.filter-form button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #155ca8;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

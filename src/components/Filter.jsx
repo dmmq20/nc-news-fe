@@ -1,3 +1,4 @@
+import "/src/components/styles/Filter.css";
 import { useState } from "react";
 
 const Filter = ({ searchParams, setSearchParams }) => {
