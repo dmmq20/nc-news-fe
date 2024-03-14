@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Topics from "./Topics";
 import { UserContext } from "../contexts/userContext";
 import Logo from "./Logo";
+import WelcomeUser from "./WelcomeUser";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,6 +24,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
+        <WelcomeUser />
         <ul className="navbar-menu-items">
           <li className="item">Topics</li>
           <Topics toggleMenu={toggleMenu} />
