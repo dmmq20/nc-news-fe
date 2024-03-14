@@ -1,28 +1,31 @@
 import "/src/components/styles/Articles.css";
-import { useContext, useEffect, useState } from "react";
-import { ArticleContext } from "../contexts/articleContext";
+import { useEffect, useState } from "react";
 import { getAllArticles } from "../api";
 import ArticleCard from "./ArticleCard";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Filter from "./Filter";
 import Loading from "./Loading";
 import Spinner from "./Spinner";
+import Navbar from "./Navbar";
 
 const Articles = () => {
-  const { articles, setArticles } = useContext(ArticleContext);
+  const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showMore, setShowMore] = useState(1);
   const [showMoreIsClicked, setShowMoreIsClicked] = useState(false);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoaded(false || showMoreIsClicked);
-    getAllArticles(topic, showMore, searchParams).then(({ articles }) => {
-      setArticles(articles);
-      setIsLoaded(true);
-      setShowMoreIsClicked(false);
-    });
+    getAllArticles(topic, showMore, searchParams)
+      .then(({ articles }) => {
+        setArticles(articles);
+        setIsLoaded(true);
+        setShowMoreIsClicked(false);
+      })
+      .catch((_) => navigate("/404"));
   }, [topic, showMore, searchParams]);
 
   const handleShowMore = () => {
@@ -32,6 +35,7 @@ const Articles = () => {
 
   return isLoaded ? (
     <div>
+      <Navbar />
       <Filter searchParams={searchParams} setSearchParams={setSearchParams} />
       {articles.map((article) => {
         return (

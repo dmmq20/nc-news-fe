@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { setCurrentUser } = useContext(UserContext);
+  const { login } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = (user) => {
-    setCurrentUser(user);
+    login(user);
     navigate("/");
   };
 
