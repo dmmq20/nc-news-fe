@@ -7,8 +7,10 @@ const Logo = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "38px", fontWeight: "900" }}>NC</div>
-      <div style={{ fontWeight: "600" }}>News</div>
+      <div style={{ fontSize: "38px", fontWeight: "900", color: "black" }}>
+        NC
+      </div>
+      <div style={{ fontWeight: "600", color: "black" }}>News</div>
     </div>
   );
 };

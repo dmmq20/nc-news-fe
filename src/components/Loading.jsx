@@ -29,6 +29,7 @@ const Loading = () => {
       >
         <Logo />
         <Spinner />
+        <div className="loading-text">Loading...</div>
       </div>
     </div>
   );

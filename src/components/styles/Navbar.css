@@ -44,6 +44,7 @@
 .navbar-menu-items {
   list-style-type: none;
   padding: 5px;
+  margin-left: 5px;
 }
 
 .navbar-menu-items .item {
@@ -51,7 +52,6 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
-  padding: 5px;
 }
 
 .navbar-toggle {

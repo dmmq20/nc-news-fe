@@ -7,7 +7,12 @@ const WelcomeUser = () => {
     <div style={{ padding: "5px" }}>
       <img
         src={currentUser.avatar_url}
-        style={{ width: "30px", height: "30px", marginRight: "5px" }}
+        style={{
+          width: "30px",
+          height: "30px",
+          marginRight: "10px",
+          borderRadius: "50%",
+        }}
       />
       {currentUser.username}
       <hr />

@@ -24,8 +24,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
-        <WelcomeUser />
         <ul className="navbar-menu-items">
+          <p className="item">User</p>
+          <WelcomeUser />
           <li className="item">Topics</li>
           <Topics toggleMenu={toggleMenu} />
           <p className="item logout" onClick={handleLogout}>
