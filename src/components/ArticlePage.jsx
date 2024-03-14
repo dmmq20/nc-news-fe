@@ -52,14 +52,8 @@ const ArticlePage = () => {
           <p>{notification}</p>
           <div className="like-icons">
             {/* TODO: give credit: https://icons8.com/license */}
-            <img
-              onClick={() => handleVote(1)}
-              src="/src/assets/thumbs-up.png"
-            />
-            <img
-              onClick={() => handleVote(-1)}
-              src="/src/assets/thumbs-down.png"
-            />
+            <img onClick={() => handleVote(1)} src="/thumbs-up.png" />
+            <img onClick={() => handleVote(-1)} src="/thumbs-down.png" />
           </div>
         </div>
         <Comments article_id={article_id} />
