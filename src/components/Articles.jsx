@@ -7,6 +7,7 @@ import Filter from "./Filter";
 import Loading from "./Loading";
 import Spinner from "./Spinner";
 import Navbar from "./Navbar";
+import Socials from "./Socials";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -54,6 +55,7 @@ const Articles = () => {
           </span>
         )}
       </div>
+      <Socials />
     </div>
   ) : (
     <Loading />
