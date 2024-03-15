@@ -26,9 +26,11 @@ export const getArticle = (article_id) => {
 };
 
 export const getArticleComments = (article_id) => {
-  return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
-    return data.comments;
-  });
+  return api
+    .get(`/articles/${article_id}/comments`, { params: { limit: 100 } })
+    .then(({ data }) => {
+      return data.comments;
+    });
 };
 
 export const updateArticleVotes = (article_id, body) => {

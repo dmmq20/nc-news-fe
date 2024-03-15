@@ -13,6 +13,7 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showMore, setShowMore] = useState(1);
+  const [hideShowMore, setHideShowMore] = useState(false);
   const [badQuery, setBadQuery] = useState(false);
   const [showMoreIsClicked, setShowMoreIsClicked] = useState(false);
   const { topic } = useParams();
@@ -21,7 +22,8 @@ const Articles = () => {
   useEffect(() => {
     setIsLoaded(false || showMoreIsClicked);
     getAllArticles(topic, showMore, searchParams)
-      .then(({ articles }) => {
+      .then(({ articles, total_count }) => {
+        setHideShowMore(articles.length === total_count);
         setArticles(articles);
         setIsLoaded(true);
         setBadQuery(false);
@@ -47,6 +49,7 @@ const Articles = () => {
           articles={articles}
           handleShowMore={handleShowMore}
           showMoreIsClicked={showMoreIsClicked}
+          hideShowMore={hideShowMore}
         />
       ) : (
         <NoResults />

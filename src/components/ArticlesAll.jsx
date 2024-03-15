@@ -1,7 +1,12 @@
 import ArticleCard from "./ArticleCard";
 import Spinner from "./Spinner";
 
-const ArticlesAll = ({ articles, handleShowMore, showMoreIsClicked }) => {
+const ArticlesAll = ({
+  articles,
+  handleShowMore,
+  showMoreIsClicked,
+  hideShowMore,
+}) => {
   return (
     <>
       {articles.map((article) => {
@@ -16,9 +21,11 @@ const ArticlesAll = ({ articles, handleShowMore, showMoreIsClicked }) => {
         {showMoreIsClicked ? (
           <Spinner />
         ) : (
-          <span className="show-more" onClick={handleShowMore}>
-            Show more
-          </span>
+          !hideShowMore && (
+            <span className="show-more" onClick={handleShowMore}>
+              Show more
+            </span>
+          )
         )}
       </div>
     </>

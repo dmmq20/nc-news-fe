@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Comment from "./Comment";
 import { getArticleComments } from "../api";
-import AddComment from "./AddComment";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
+import Comment from "./Comment";
+import AddComment from "./AddComment";
 import Loading from "./Loading";
 
 const Comments = ({ article_id }) => {
