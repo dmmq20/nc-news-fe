@@ -25,9 +25,11 @@ export const getArticle = (article_id) => {
   });
 };
 
-export const getArticleComments = (article_id) => {
+export const getArticleComments = (article_id, more) => {
   return api
-    .get(`/articles/${article_id}/comments`, { params: { limit: 100 } })
+    .get(`/articles/${article_id}/comments`, {
+      params: { p: 1, limit: 10 * more },
+    })
     .then(({ data }) => {
       return data.comments;
     });

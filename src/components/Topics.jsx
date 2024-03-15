@@ -16,7 +16,7 @@ const Topics = ({ toggleMenu }) => {
   return (
     <ul>
       <Link to={`/`} className="li-link">
-        <li onClick={toggleMenu}>all</li>
+        <li onClick={toggleMenu}>#all</li>
       </Link>
       {topics.map((topic) => (
         <Link
@@ -24,7 +24,7 @@ const Topics = ({ toggleMenu }) => {
           key={topic.slug}
           to={`/articles/${topic.slug}`}
         >
-          <li onClick={toggleMenu}>{topic.slug}</li>
+          <li onClick={toggleMenu}>#{topic.slug}</li>
         </Link>
       ))}
     </ul>
