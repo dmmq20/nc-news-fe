@@ -10,7 +10,7 @@ const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [voted, setVoted] = useState(false);
+  const [hasVoted, setHasVoted] = useState(0);
   const [notification, setNotification] = useState(null);
   const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const ArticlePage = () => {
   const handleVote = (num) => {
     const updatedArticle = { ...article, votes: article.votes + num };
     setArticle(updatedArticle);
-    setVoted(true);
+    setHasVoted((prevVote) => prevVote + num);
     updateArticleVotes(article_id, { inc_votes: num })
       .then((_) => {
         setNotification("Thanks for voting!");
@@ -59,11 +59,11 @@ const ArticlePage = () => {
           </h1>
           <div className="like-icons">
             <img
-              onClick={() => (voted ? null : handleVote(1))}
+              onClick={() => (hasVoted === 1 ? null : handleVote(1))}
               src="/chevron-up.svg"
             />
             <img
-              onClick={() => (voted ? null : handleVote(-1))}
+              onClick={() => (hasVoted === -1 ? null : handleVote(-1))}
               src="/chevron-down.svg"
             />
           </div>
