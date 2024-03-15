@@ -17,13 +17,13 @@ const App = () => {
           <Route path="/" element={<Articles />} />
           <Route path="/articles/:topic" element={<Articles />} />
           <Route path="/article/:article_id" element={<ArticlePage />} />
-          <Route path="/404" element={<NotFound />} />
         </>
       ) : (
         <Route path="/" element={<Navigate to="/login" />} />
       )}
       <Route path="/login" element={<Login />} />
       <Route path="/*" element={<NotFound />} />
+      <Route path="/404" element={<NotFound />} />
     </Routes>
   );
 };

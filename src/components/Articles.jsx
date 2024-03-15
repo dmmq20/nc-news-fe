@@ -1,22 +1,22 @@
 import "/src/components/styles/Articles.css";
 import { useEffect, useState } from "react";
 import { getAllArticles } from "../api";
-import ArticleCard from "./ArticleCard";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Filter from "./Filter";
 import Loading from "./Loading";
-import Spinner from "./Spinner";
 import Navbar from "./Navbar";
 import Socials from "./Socials";
+import NoResults from "./NoResults";
+import ArticlesAll from "./ArticlesAll";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showMore, setShowMore] = useState(1);
+  const [badQuery, setBadQuery] = useState(false);
   const [showMoreIsClicked, setShowMoreIsClicked] = useState(false);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoaded(false || showMoreIsClicked);
@@ -24,9 +24,13 @@ const Articles = () => {
       .then(({ articles }) => {
         setArticles(articles);
         setIsLoaded(true);
+        setBadQuery(false);
         setShowMoreIsClicked(false);
       })
-      .catch((_) => navigate("/404"));
+      .catch((_) => {
+        setIsLoaded(true);
+        setBadQuery(true);
+      });
   }, [topic, showMore, searchParams]);
 
   const handleShowMore = () => {
@@ -38,23 +42,15 @@ const Articles = () => {
     <div>
       <Navbar />
       <Filter searchParams={searchParams} setSearchParams={setSearchParams} />
-      {articles.map((article) => {
-        return (
-          <div key={article.article_id}>
-            <ArticleCard article={article} />
-            <hr />
-          </div>
-        );
-      })}
-      <div className="show-more-container">
-        {showMoreIsClicked ? (
-          <Spinner />
-        ) : (
-          <span className="show-more" onClick={handleShowMore}>
-            Show more
-          </span>
-        )}
-      </div>
+      {!badQuery ? (
+        <ArticlesAll
+          articles={articles}
+          handleShowMore={handleShowMore}
+          showMoreIsClicked={showMoreIsClicked}
+        />
+      ) : (
+        <NoResults />
+      )}
       <Socials />
     </div>
   ) : (
