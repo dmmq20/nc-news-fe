@@ -27,15 +27,15 @@ const ArticlePage = () => {
   const handleVote = (num) => {
     const updatedArticle = { ...article, votes: article.votes + num };
     setArticle(updatedArticle);
-    setHasVoted((prevVote) => prevVote + num);
-    updateArticleVotes(article_id, { inc_votes: num })
-      .then((_) => {
-        setNotification("Thanks for voting!");
-      })
-      .catch((_) => {
-        setArticle({ ...article });
-        setNotification("Something went wrong...");
-      });
+    setHasVoted((prevVote) => {
+      const newVote = prevVote + num;
+      setNotification(newVote !== 0 ? "Thanks for voting!" : null);
+      return newVote;
+    });
+    updateArticleVotes(article_id, { inc_votes: num }).catch((_) => {
+      setArticle({ ...article });
+      setNotification("Something went wrong...");
+    });
   };
 
   return isLoaded ? (
@@ -59,11 +59,19 @@ const ArticlePage = () => {
           </h1>
           <div className="like-icons">
             <img
-              onClick={() => (hasVoted === 1 ? null : handleVote(1))}
+              onClick={() =>
+                hasVoted === 1
+                  ? setNotification("You have already voted")
+                  : handleVote(1)
+              }
               src="/chevron-up.svg"
             />
             <img
-              onClick={() => (hasVoted === -1 ? null : handleVote(-1))}
+              onClick={() =>
+                hasVoted === -1
+                  ? setNotification("You have already voted")
+                  : handleVote(-1)
+              }
               src="/chevron-down.svg"
             />
           </div>
