@@ -25,7 +25,7 @@ const Comment = ({ comment, currentUser }) => {
         <>
           <div style={{ display: "flex" }}>
             <span style={{ fontWeight: "600" }}>{comment.author}</span>
-            <ul style={{ margin: "0" }}>
+            <ul style={{ margin: "0", paddingLeft: "30px" }}>
               <li>{days} days ago</li>
             </ul>
           </div>

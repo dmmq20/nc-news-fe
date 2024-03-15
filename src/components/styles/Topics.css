@@ -3,12 +3,12 @@
   color: black;
 }
 
-li {
+.li-link li {
   list-style-type: none;
   padding-bottom: 4px;
 }
 
-li:hover {
+.li-link li:hover {
   text-decoration: underline;
 }
 

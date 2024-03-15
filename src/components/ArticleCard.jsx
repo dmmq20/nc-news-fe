@@ -13,12 +13,18 @@ const ArticleCard = ({ article }) => {
           <img className="article-image" src={article.article_img_url} />
         </div>
         <div>
-          <ul>
-            <li style={{ textDecoration: "none" }}>{article.author}</li>
-            <li style={{ textDecoration: "none" }}>
-              {article.votes} votes | {article.comment_count} comments
-            </li>
-          </ul>
+          <div className="article-card-details">
+            <span>{article.author}</span>
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {article.votes} votes | {article.comment_count}{" "}
+              <img src="/message-text.svg" style={{ marginLeft: "3px" }} />
+            </span>
+          </div>
         </div>
       </Link>
     </article>

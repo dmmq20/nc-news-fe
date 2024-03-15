@@ -8,7 +8,7 @@ export const getAllArticles = (topic, more, params) => {
   const config = {
     params: {
       p: 1,
-      limit: 5 * more,
+      limit: 6 * more,
       topic,
       sort_by: params.get("sort_by"),
       order: params.get("order"),

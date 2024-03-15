@@ -13,11 +13,12 @@
   height: auto;
   max-height: 400px;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .article-page h1 {
   font-size: 36px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .article-content {
@@ -26,8 +27,6 @@
 }
 
 .author-info {
-  display: flex;
-  align-items: center;
   font-size: 16px;
   font-style: italic;
 }
@@ -40,17 +39,32 @@
 .likes {
   font-weight: bold;
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
+}
+
+.likes p {
+  padding: 0;
+  margin: 0;
 }
 
 .like-icons {
-  padding: 5px;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
+  padding: 0;
 }
 
-.likes img {
-  width: 32px;
+.like-icons img {
   height: 32px;
+  width: 32px;
+}
+
+.topic {
+  text-decoration: none;
+  color: red;
+}
+
+.topic:hover {
+  text-decoration: underline;
 }

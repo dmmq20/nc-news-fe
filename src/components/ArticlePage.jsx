@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getArticle, updateArticleVotes } from "../api";
 import { useEffect, useState } from "react";
 import "/src/components/styles/ArticlePage.css";
@@ -43,18 +43,33 @@ const ArticlePage = () => {
       <Navbar />
       <article className="article-page">
         <img src={article.article_img_url} alt={article.title} />
-        <h1>{article.title}</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            margin: "0",
+          }}
+        >
+          <h1 style={{ padding: "0", margin: "0" }}>
+            {article.title}{" "}
+            <Link to={`/articles/${article.topic}`} className="topic">
+              [{article.topic}]
+            </Link>
+          </h1>
+          <div className="like-icons">
+            <img onClick={() => handleVote(1)} src="/chevron-up.svg" />
+            <img onClick={() => handleVote(-1)} src="/chevron-down.svg" />
+          </div>
+        </div>
         <div className="author-info">{article.author}</div>
-        <p className="date">{new Date(article.created_at).toDateString()}</p>
+        <div className="date-and-topic">
+          <p className="date">{new Date(article.created_at).toDateString()}</p>
+        </div>
         <p className="article-content">{article.body}</p>
         <div className="likes">
           <p>Likes: {article.votes}</p>
-          <p>{notification}</p>
-          <div className="like-icons">
-            {/* TODO: give credit: https://icons8.com/license */}
-            <img onClick={() => handleVote(1)} src="/thumbs-up.png" />
-            <img onClick={() => handleVote(-1)} src="/thumbs-down.png" />
-          </div>
+          <p className="likes">{notification}</p>
         </div>
         <Comments article_id={article_id} />
       </article>

@@ -1,6 +1,5 @@
 .article-card {
-  padding: 20px;
-  margin: 10px;
+  padding: 10px;
   max-width: 600px;
 }
 
@@ -19,6 +18,12 @@
   justify-content: space-between;
 }
 
+.article-card-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .article-card:hover {
   background-color: rgba(242, 244, 245, 255);
   border-radius: 8px;
@@ -32,7 +37,7 @@
 
 .article-title {
   font-size: 18px;
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 
 .article-card a {
