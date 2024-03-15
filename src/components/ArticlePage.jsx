@@ -10,6 +10,7 @@ const ArticlePage = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [voted, setVoted] = useState(false);
   const [notification, setNotification] = useState(null);
   const navigate = useNavigate();
 
@@ -26,15 +27,14 @@ const ArticlePage = () => {
   const handleVote = (num) => {
     const updatedArticle = { ...article, votes: article.votes + num };
     setArticle(updatedArticle);
+    setVoted(true);
     updateArticleVotes(article_id, { inc_votes: num })
       .then((_) => {
         setNotification("Thanks for voting!");
-        setTimeout(() => setNotification(null), 2500);
       })
       .catch((_) => {
         setArticle({ ...article });
         setNotification("Something went wrong...");
-        setTimeout(() => setNotification(null), 2500);
       });
   };
 
@@ -58,8 +58,14 @@ const ArticlePage = () => {
             </Link>
           </h1>
           <div className="like-icons">
-            <img onClick={() => handleVote(1)} src="/chevron-up.svg" />
-            <img onClick={() => handleVote(-1)} src="/chevron-down.svg" />
+            <img
+              onClick={() => (voted ? null : handleVote(1))}
+              src="/chevron-up.svg"
+            />
+            <img
+              onClick={() => (voted ? null : handleVote(-1))}
+              src="/chevron-down.svg"
+            />
           </div>
         </div>
         <div className="author-info">{article.author}</div>
